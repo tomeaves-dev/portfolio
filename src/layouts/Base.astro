@@ -1,0 +1,150 @@
+---
+const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} — tomeaves-dev</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a href="/" class="nav-logo">tomeaves-dev</a>
+        <ul class="nav-links">
+          <li><a href="/#about">about</a></li>
+          <li><a href="/#projects">projects</a></li>
+          <li><a href="/#experience">experience</a></li>
+          <li><a href="/blog">blog</a></li>
+          <li><a href="/#contact">contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="footer-copy">© 2026 tomeaves-dev</span>
+        <ul class="footer-links">
+          <li><a href="https://tomeaves-dev.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+          <li><a href="https://github.com/tomeaves-dev" target="_blank" rel="noopener">github</a></li>
+        </ul>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<style>
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .nav-logo {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo::before {
+    content: '> ';
+    color: var(--accent);
+  }
+
+  .nav-logo:hover {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--space-8);
+  }
+
+  .nav-links a {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: var(--space-8) 0;
+    margin-top: var(--space-32);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    list-style: none;
+    gap: var(--space-6);
+  }
+
+  .footer-links a {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  /* MOBILE NAV */
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: var(--space-4);
+    }
+
+    .nav-links li:nth-child(n+4) {
+      display: none;
+    }
+  }
+</style>

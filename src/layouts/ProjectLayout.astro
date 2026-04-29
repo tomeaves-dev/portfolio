@@ -1,0 +1,285 @@
+---
+import Base from './Base.astro'
+
+const {
+  title,
+  description,
+  engine,
+  status = 'In Development',
+  itch = '#',
+  tags = [],
+} = Astro.props;
+---
+
+<Base title={title}>
+  <article class="project-page">
+
+    <!-- BACK -->
+    <div class="container back-row">
+      <a href="/#projects" class="back-link">← back to projects</a>
+    </div>
+
+    <!-- HERO -->
+    <header class="project-hero">
+      <div class="container">
+        <div class="project-meta">
+          <span class="tag">{engine}</span>
+          <span class="project-status">{status}</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="project-description">{description}</p>
+        {itch !== '#' && (
+          <a href={itch} target="_blank" rel="noopener" class="btn btn-primary">
+            Play on itch.io →
+          </a>
+        )}
+        {itch === '#' && (
+          <span class="coming-soon">Not yet available on itch.io</span>
+        )}
+      </div>
+    </header>
+
+    <!-- SCREENSHOTS -->
+    <section class="section screenshots-section">
+      <div class="container">
+        <p class="section-label">screenshots</p>
+        <div class="screenshots-grid">
+          <div class="screenshot-placeholder large"></div>
+          <div class="screenshot-placeholder"></div>
+          <div class="screenshot-placeholder"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <div class="container project-body">
+        <div class="project-details">
+          <p class="section-label">about</p>
+          <slot />
+        </div>
+        <aside class="project-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-label">Engine</p>
+            <p class="sidebar-value">{engine}</p>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-label">Status</p>
+            <p class="sidebar-value">{status}</p>
+          </div>
+          {tags.length > 0 && (
+            <div class="sidebar-block">
+              <p class="sidebar-label">Tags</p>
+              <div class="sidebar-tags">
+                {tags.map(tag => <span class="tag">{tag}</span>)}
+              </div>
+            </div>
+          )}
+          {itch !== '#' && (
+            <div class="sidebar-block">
+              <a href={itch} target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Play on itch.io →
+              </a>
+            </div>
+          )}
+        </aside>
+      </div>
+    </section>
+
+    <!-- TECH BREAKDOWN -->
+    <section class="section tech-section">
+      <div class="container">
+        <p class="section-label">tech breakdown</p>
+        <slot name="tech" />
+      </div>
+    </section>
+
+    <!-- WHAT I LEARNED -->
+    <section class="section learned-section">
+      <div class="container">
+        <p class="section-label">what i learned</p>
+        <slot name="learned" />
+      </div>
+    </section>
+
+  </article>
+</Base>
+
+<style>
+  .back-row {
+    padding-top: calc(var(--nav-height) + var(--space-8));
+    padding-bottom: var(--space-4);
+  }
+
+  .back-link {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    transition: color var(--transition);
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  /* HERO */
+  .project-hero {
+    padding: var(--space-8) 0 var(--space-16);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .project-status {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .project-hero h1 {
+    margin-bottom: var(--space-6);
+  }
+
+  .project-description {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 60ch;
+    margin-bottom: var(--space-8);
+    line-height: 1.6;
+  }
+
+  .coming-soon {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: var(--space-3) var(--space-6);
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  /* SCREENSHOTS */
+  .screenshots-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .screenshot-placeholder {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .screenshot-placeholder.large {
+    grid-row: 1;
+    aspect-ratio: unset;
+  }
+
+  /* BODY */
+  .project-body {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .project-details {
+    min-width: 0;
+  }
+
+  .project-details :global(h2) {
+    font-size: var(--text-2xl);
+    margin: var(--space-8) 0 var(--space-4);
+  }
+
+  .project-details :global(h3) {
+    font-size: var(--text-xl);
+    margin: var(--space-6) 0 var(--space-3);
+    color: var(--text-primary);
+  }
+
+  .project-details :global(p) {
+    margin-bottom: var(--space-4);
+    color: var(--text-secondary);
+  }
+
+  /* SIDEBAR */
+  .project-sidebar {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--space-8));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: var(--space-6);
+  }
+
+  .sidebar-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .sidebar-label {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    max-width: none;
+  }
+
+  .sidebar-value {
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    max-width: none;
+  }
+
+  .sidebar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* TECH / LEARNED */
+  .tech-section,
+  .learned-section {
+    border-top: 1px solid var(--border);
+  }
+
+  .tech-section :global(p),
+  .learned-section :global(p) {
+    margin-bottom: var(--space-4);
+    max-width: 65ch;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .screenshots-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      height: auto;
+    }
+
+    .screenshot-placeholder.large {
+      aspect-ratio: 16 / 9;
+    }
+
+    .project-body {
+      grid-template-columns: 1fr;
+    }
+
+    .project-sidebar {
+      position: static;
+    }
+  }
+</style>

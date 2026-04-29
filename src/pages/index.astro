@@ -1,17 +1,473 @@
 ---
+import Base from '../layouts/Base.astro';
+import { recentProjects } from '../data/projects.js';
 
+const projects = recentProjects(2);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="Home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="hero-available">
+        <span class="available-dot"></span>
+        open to work
+      </p>
+      <h1 class="hero-name">Tom Eaves</h1>
+      <p class="hero-handle">@tomeaves-dev</p>
+      <p class="hero-bio">
+        AAA game developer turned indie. Building games with Bevy, Godot, and Unreal Engine 5 —
+        from polished prototypes to full releases.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container about-inner">
+      <div class="about-text">
+        <p class="section-label">about</p>
+        <h2>Building games<br />that feel good to play</h2>
+        <p>
+          I'm a game developer based in the UK with professional experience at
+          <strong>Lucid Games</strong> (working on titles for <strong>Rare / Sea of Thieves</strong>).
+          I'm currently transitioning to full-time indie development — building smaller, focused
+          projects that I care about.
+        </p>
+        <p>
+          My background spans Unreal Engine 5, Godot, and Bevy. I care about game feel,
+          clean architecture, and shipping things that are actually fun.
+        </p>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">terminal</span>
+        </div>
+        <pre class="terminal-body"><span class="t-prompt">$</span> whoami
+<span class="t-out">> tomeaves-dev</span>
+
+<span class="t-prompt">$</span> cat stack.txt
+<span class="t-out">> bevy, godot, unreal engine 5
+> rust, c++, gdscript, c#
+> ecs, gameplay systems, physics</span>
+
+<span class="t-prompt">$</span> echo $STATUS
+<span class="t-out">> going indie</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="container">
+      <p class="section-label">projects</p>
+      <div class="section-heading-row">
+        <h2>Recent Projects</h2>
+        <a href="/projects" class="all-link">View all {projects.length} projects →</a>
+      </div>
+      <p class="section-sub">A selection of my most recent work. See <a href="/projects">all projects</a>.</p>
+
+      <div class="projects-grid">
+        {projects.map(project => (
+          <div class="project-card">
+            <div class="project-card-top">
+              <div class="project-thumb-placeholder"></div>
+            </div>
+            <div class="project-card-body">
+              <div class="project-meta">
+                <span class="tag">{project.engine}</span>
+                <span class="project-status">{project.status}</span>
+              </div>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div class="project-links">
+                <a href={`/projects/${project.slug}`} class="btn btn-outline">Details →</a>
+                {project.itch !== '#' && (
+                  <a href={project.itch} target="_blank" rel="noopener" class="btn btn-primary">Play on itch.io</a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <p class="section-label">experience</p>
+      <h2>Where I've Worked</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2022 — Present</div>
+          <div class="timeline-content">
+            <h3>Lucid Games</h3>
+            <p class="timeline-role">Game Developer</p>
+            <p>
+              Worked as part of the development team on titles for Rare's Sea of Thieves.
+              Responsibilities spanned gameplay systems, tooling, and engine work in Unreal Engine 5.
+            </p>
+            <div class="timeline-tags">
+              <span class="tag">Unreal Engine 5</span>
+              <span class="tag">C++</span>
+              <span class="tag">Blueprints</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container contact-inner">
+      <p class="section-label">contact</p>
+      <h2>Let's Talk</h2>
+      <p>Have a project in mind, or just want to say hello?</p>
+      <div class="contact-links">
+        <a href="mailto:hello@tomeaves.dev" class="btn btn-primary">hello@tomeaves.dev</a>
+        <a href="https://tomeaves-dev.itch.io" target="_blank" rel="noopener" class="btn btn-outline">itch.io</a>
+        <a href="https://github.com/tomeaves-dev" target="_blank" rel="noopener" class="btn btn-outline">github</a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.25;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--nav-height);
+  }
+
+  .hero-available {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--border-glow);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 2px;
+    margin-bottom: var(--space-6);
+    max-width: fit-content;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .available-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    margin-bottom: var(--space-2);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-handle {
+    font-size: var(--text-lg);
+    color: var(--accent);
+    margin-bottom: var(--space-6);
+    font-weight: 400;
+  }
+
+  .hero-bio {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 55ch;
+    margin-bottom: var(--space-8);
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  /* ── ABOUT ────────────────────────────────────────── */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .about-text h2 {
+    margin: var(--space-4) 0 var(--space-6);
+  }
+
+  .about-text p {
+    margin-bottom: var(--space-4);
+  }
+
+  .about-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .terminal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--accent-glow);
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot.red    { background: #ff5f57; }
+  .terminal-dot.yellow { background: #febc2e; }
+  .terminal-dot.green  { background: #28c840; }
+
+  .terminal-title {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0.05em;
+  }
+
+  .terminal-body {
+    padding: var(--space-6);
+    background: var(--bg-surface);
+    border: none;
+    border-left: none;
+    font-size: var(--text-sm);
+    line-height: 1.8;
+  }
+
+  .t-prompt { color: var(--accent); }
+  .t-out    { color: var(--text-secondary); }
+
+  /* ── PROJECTS ─────────────────────────────────────── */
+  .section-heading-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: var(--space-4) 0 0;
+  }
+
+  .all-link {
+    font-size: var(--text-sm);
+    color: var(--accent);
+    transition: opacity var(--transition);
+    white-space: nowrap;
+  }
+
+  .all-link:hover {
+    opacity: 0.7;
+  }
+
+  .section-sub {
+    color: var(--text-secondary);
+    margin: var(--space-2) 0 var(--space-12);
+    max-width: none;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .project-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color var(--transition-md), box-shadow var(--transition-md);
+  }
+
+  .project-card:hover {
+    border-color: var(--border-glow);
+    box-shadow: var(--accent-glow);
+  }
+
+  .project-thumb-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--bg-elevated);
+    background-image: linear-gradient(
+      135deg,
+      var(--bg-elevated) 25%,
+      var(--bg-surface) 100%
+    );
+  }
+
+  .project-card-body {
+    padding: var(--space-6);
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+
+  .project-status {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .project-card-body h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  .project-card-body p {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+  }
+
+  .project-links {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .section-sub a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .section-sub a:hover {
+    opacity: 0.7;
+  }
+
+  /* ── EXPERIENCE ───────────────────────────────────── */
+  .timeline {
+    margin-top: var(--space-12);
+    border-left: 1px solid var(--border);
+    padding-left: var(--space-8);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: var(--space-12);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--space-8) - 1px);
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .timeline-date {
+    font-size: var(--text-xs);
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline-content h3 {
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline-role {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-4);
+    max-width: none;
+  }
+
+  .timeline-content > p:last-of-type {
+    margin-bottom: var(--space-4);
+  }
+
+  .timeline-tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  /* ── CONTACT ──────────────────────────────────────── */
+  .contact-inner h2 {
+    margin: var(--space-4) 0 var(--space-3);
+  }
+
+  .contact-inner > p {
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-links {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>
