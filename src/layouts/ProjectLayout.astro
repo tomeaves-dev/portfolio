@@ -1,14 +1,8 @@
 ---
-import Base from './Base.astro'
+import Base from './Base.astro';
+import Tags from '../components/Tags.astro';
 
-const {
-  title,
-  description,
-  engine,
-  status = 'In Development',
-  itch = '#',
-  tags = [],
-} = Astro.props;
+const { title, description, tags = { action: [], status: '', tech: [] } } = Astro.props;
 ---
 
 <Base title={title}>
@@ -16,26 +10,15 @@ const {
 
     <!-- BACK -->
     <div class="container back-row">
-      <a href="/#projects" class="back-link">← back to projects</a>
+      <a href="/projects" class="back-link">← back to projects</a>
     </div>
 
     <!-- HERO -->
     <header class="project-hero">
       <div class="container">
-        <div class="project-meta">
-          <span class="tag">{engine}</span>
-          <span class="project-status">{status}</span>
-        </div>
+        <Tags tags={tags} />
         <h1>{title}</h1>
         <p class="project-description">{description}</p>
-        {itch !== '#' && (
-          <a href={itch} target="_blank" rel="noopener" class="btn btn-primary">
-            Play on itch.io →
-          </a>
-        )}
-        {itch === '#' && (
-          <span class="coming-soon">Not yet available on itch.io</span>
-        )}
       </div>
     </header>
 
@@ -60,26 +43,24 @@ const {
         </div>
         <aside class="project-sidebar">
           <div class="sidebar-block">
-            <p class="sidebar-label">Engine</p>
-            <p class="sidebar-value">{engine}</p>
-          </div>
-          <div class="sidebar-block">
             <p class="sidebar-label">Status</p>
-            <p class="sidebar-value">{status}</p>
+            <p class="sidebar-value">{tags.status}</p>
           </div>
-          {tags.length > 0 && (
+          {tags.tech?.length > 0 && (
             <div class="sidebar-block">
-              <p class="sidebar-label">Tags</p>
+              <p class="sidebar-label">Tech</p>
               <div class="sidebar-tags">
-                {tags.map(tag => <span class="tag">{tag}</span>)}
+                {tags.tech.map(t => <span class="tag tag-tech">{t}</span>)}
               </div>
             </div>
           )}
-          {itch !== '#' && (
+          {tags.action?.length > 0 && (
             <div class="sidebar-block">
-              <a href={itch} target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                Play on itch.io →
-              </a>
+              {tags.action.map(action => (
+                <a href={action.url} target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; justify-content: center; margin-bottom: var(--space-2);">
+                  {action.label}
+                </a>
+              ))}
             </div>
           )}
         </aside>
@@ -122,47 +103,22 @@ const {
     opacity: 1;
   }
 
-  /* HERO */
   .project-hero {
     padding: var(--space-8) 0 var(--space-16);
     border-bottom: 1px solid var(--border);
   }
 
-  .project-meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
-  }
-
-  .project-status {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-
   .project-hero h1 {
-    margin-bottom: var(--space-6);
+    margin: var(--space-6) 0 var(--space-6);
   }
 
   .project-description {
     font-size: var(--text-lg);
     color: var(--text-secondary);
     max-width: 60ch;
-    margin-bottom: var(--space-8);
     line-height: 1.6;
   }
 
-  .coming-soon {
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    padding: var(--space-3) var(--space-6);
-    border-radius: 2px;
-    display: inline-block;
-  }
-
-  /* SCREENSHOTS */
   .screenshots-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
@@ -183,16 +139,11 @@ const {
     aspect-ratio: unset;
   }
 
-  /* BODY */
   .project-body {
     display: grid;
     grid-template-columns: 1fr 260px;
     gap: var(--space-16);
     align-items: start;
-  }
-
-  .project-details {
-    min-width: 0;
   }
 
   .project-details :global(h2) {
@@ -211,7 +162,6 @@ const {
     color: var(--text-secondary);
   }
 
-  /* SIDEBAR */
   .project-sidebar {
     position: sticky;
     top: calc(var(--nav-height) + var(--space-8));
@@ -250,7 +200,15 @@ const {
     gap: var(--space-2);
   }
 
-  /* TECH / LEARNED */
+  .tag-tech {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--border-glow);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 2px;
+  }
+
   .tech-section,
   .learned-section {
     border-top: 1px solid var(--border);
@@ -262,12 +220,10 @@ const {
     max-width: 65ch;
   }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     .screenshots-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
-      height: auto;
     }
 
     .screenshot-placeholder.large {
