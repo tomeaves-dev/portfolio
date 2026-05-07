@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Astro.props;
 ---
 
@@ -9,7 +11,7 @@ const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Ast
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} — tomeaves-dev</title>
+    <title>tomeaves.dev | {title}</title>
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
@@ -17,12 +19,12 @@ const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Ast
     <!-- NAV -->
     <nav class="nav">
       <div class="container nav-inner">
-        <a href="/" class="nav-logo">tomeaves-dev</a>
+        <a href="/" class="nav-logo">tomeaves.dev</a>
         <ul class="nav-links">
           <li><a href="/#about">about</a></li>
-          <li><a href="/projects">projects</a></li>
-          <li><a href="/#experience">experience</a></li>
           <li><a href="/blog">blog</a></li>
+          <li><a href="/#experience">experience</a></li>
+          <li><a href="/projects">projects</a></li>
           <li><a href="/#contact">contact</a></li>
         </ul>
       </div>
@@ -36,10 +38,33 @@ const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Ast
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container footer-inner">
-        <span class="footer-copy">© 2026 tomeaves-dev</span>
-        <ul class="footer-links">
-          <li><a href="https://tomeaves-dev.itch.io" target="_blank" rel="noopener">itch.io</a></li>
-          <li><a href="https://github.com/tomeaves-dev" target="_blank" rel="noopener">github</a></li>
+        <span class="footer-copy">© 2026 Tom Eaves</span>
+        <ul class="footer-socials">
+          <li>
+            <a href="mailto:hello@tomeaves.dev" aria-label="Email">
+              <Icon name="mdi:email" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/thomasrichardeaves/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <Icon name="mdi:linkedin" />
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tomeaves-dev" target="_blank" rel="noopener" aria-label="GitHub">
+              <Icon name="mdi:github" />
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/tomeaves_dev" target="_blank" rel="noopener" aria-label="X / Twitter">
+              <Icon name="mdi:twitter" />
+            </a>
+          </li>
+          <li>
+            <a href="https://tommy-eaves-games.itch.io/" target="_blank" rel="noopener" aria-label="itch.io">
+              <Icon name="mdi:gamepad-variant" />
+            </a>
+          </li>
         </ul>
       </div>
     </footer>
@@ -120,31 +145,27 @@ const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Ast
     color: var(--text-muted);
   }
 
-  .footer-links {
+  .footer-socials {
     display: flex;
     list-style: none;
-    gap: var(--space-6);
+    gap: var(--space-4);
+    align-items: center;
   }
 
-  .footer-links a {
-    font-size: var(--text-xs);
+  .footer-socials a {
+    display: flex;
+    align-items: center;
     color: var(--text-muted);
     transition: color var(--transition);
   }
 
-  .footer-links a:hover {
+  .footer-socials a:hover {
     color: var(--accent);
     opacity: 1;
   }
 
-  /* MOBILE NAV */
-  @media (max-width: 640px) {
-    .nav-links {
-      gap: var(--space-4);
-    }
-
-    .nav-links li:nth-child(n+4) {
-      display: none;
-    }
+  .footer-socials [data-icon] {
+    width: 18px;
+    height: 18px;
   }
 </style>
