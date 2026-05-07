@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404">
+  <section class="not-found">
+    <div class="container">
+      <p class="section-label">error</p>
+      <h1 class="error-code">404</h1>
+      <p class="error-message">Page not found.</p>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">terminal</span>
+        </div>
+        <pre class="terminal-body"><span class="t-prompt">$</span> find . -name "{Astro.url.pathname}"
+<span class="t-out">> no such file or directory</span>
+
+<span class="t-prompt">$</span> echo $SUGGESTION
+<span class="t-out">> try going back home</span></pre>
+      </div>
+      <a href="/" class="btn btn-primary">← Back to Home</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+  }
+
+  .error-code {
+    font-size: clamp(6rem, 20vw, 12rem);
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.15;
+    margin: var(--space-4) 0 0;
+    letter-spacing: -0.05em;
+  }
+
+  .error-message {
+    font-size: var(--text-2xl);
+    color: var(--text-primary);
+    margin: calc(-1 * var(--space-12)) 0 var(--space-8);
+    max-width: none;
+  }
+
+  .terminal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--accent-glow);
+    max-width: 480px;
+    margin-bottom: var(--space-8);
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot.red    { background: #ff5f57; }
+  .terminal-dot.yellow { background: #febc2e; }
+  .terminal-dot.green  { background: #28c840; }
+
+  .terminal-title {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0.05em;
+  }
+
+  .terminal-body {
+    padding: var(--space-6);
+    background: var(--bg-surface);
+    border: none;
+    border-left: none;
+    font-size: var(--text-sm);
+    line-height: 1.8;
+  }
+
+  .t-prompt { color: var(--accent); }
+  .t-out    { color: var(--text-secondary); }
+</style>

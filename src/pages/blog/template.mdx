@@ -1,0 +1,98 @@
+---
+title: 'Your Post Title'
+date: '2026-01-01'
+excerpt: 'A short summary of your post — shown on the blog listing page and in the post hero. Keep it to one or two sentences.'
+tags: ['Tag1', 'Tag2']
+readingTime: 5
+---
+
+{/*
+  ============================================================
+  HOW TO USE THIS TEMPLATE
+  ============================================================
+  1. Copy this file and rename it to match your post slug
+     e.g. my-first-devlog.mdx → accessible at /blog/my-first-devlog
+     Use lowercase and hyphens, no spaces.
+
+  2. Fill in the frontmatter above:
+     - title:       The title of your post
+     - date:        Publication date in YYYY-MM-DD format
+     - excerpt:     Short summary shown on the blog listing page
+     - tags:        Free-form tags e.g. ['Devlog', 'Rust', 'Bevy']
+     - readingTime: Estimated read time in minutes
+
+  3. Add your post to src/data/blog.js so it appears on the
+     blog listing page and homepage. Copy an existing entry
+     and update the slug to match this filename.
+
+  4. Write your content below the import/layout lines.
+     You can use:
+     - Standard Markdown (headings, bold, lists, links)
+     - Images:  ![alt text](./image.png)
+     - Video:   <video src="./clip.mp4" controls loop muted />
+     - YouTube: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen />
+     - Code blocks with syntax highlighting (see example below)
+     - Inline code: `like this`
+     - Blockquotes: > like this
+     - Horizontal rules: ---
+     - Astro components: import and use them like in .astro files
+  ============================================================
+*/}
+
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+<BlogLayout {...frontmatter}>
+
+## Introduction
+
+Write your introduction here. What is this post about? Why are you writing it?
+
+## A Section Heading
+
+Write your content here. You can use **bold**, *italic*, and `inline code`.
+
+Here's a link: [Bevy Engine](https://bevyengine.org)
+
+Here's a list:
+- Item one
+- Item two
+- Item three
+
+## Code Example
+
+```rust
+// Syntax highlighting works automatically for common languages.
+// Just specify the language after the opening backticks.
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+```cpp
+// C++ example
+void Update(float DeltaTime)
+{
+    // Your code here
+}
+```
+
+## Adding an Image
+
+Drop your image into the same folder as this file, or into public/images/.
+Then reference it like this:
+
+![A descriptive alt text](./public/images/tom.png)
+
+## Adding a Video
+
+<video src="./your-clip.mp4" controls loop muted style="width: 100%; border-radius: 4px;" />
+
+## A Blockquote
+
+> This is a blockquote. Useful for highlighting a key insight or quote.
+
+## Wrapping Up
+
+Write your conclusion here. What did you learn? What's next?
+
+</BlogLayout>

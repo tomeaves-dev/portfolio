@@ -1,10 +1,10 @@
 export const posts = [
   {
-    title: 'Getting Started with Bevy and Rust',
-    slug: 'getting-started-bevy-rust',
-    date: '2025-01-15',
-    excerpt: 'My first impressions of building a roguelike in Rust with Bevy — the ECS architecture, the borrow checker, and why I chose it over alternatives.',
-    tags: ['Devlog', 'Rust', 'Bevy', 'bevy_rogue'],
+    title: 'Template',
+    slug: 'template',
+    date: '0000-00-00',
+    excerpt: 'Template excerpt blah blah blah',
+    tags: ['Tag1', 'Tag2', 'Tag3'],
     readingTime: 5,
   },
 ];

@@ -1,0 +1,89 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+// ============================================================
+// HOW TO USE THIS TEMPLATE
+// ============================================================
+// 1. Copy this file and rename it to match your project slug
+//    e.g. my-game.astro → accessible at /projects/my-game
+//
+// 2. Fill in the props below:
+//    - title:       The name of your project
+//    - description: A short one or two sentence summary
+//    - tags:
+//        action: Links shown as filled cyan buttons (Play Now, Source Code etc.)
+//                Each needs a label and a url.
+//                Leave as [] if no links yet.
+//        status: One of: 'In Development' | 'Released' | 'On Hold'
+//        tech:   Array of tech tags e.g. ['UE5', 'C++', 'Multiplayer']
+//
+// 3. Add your content in the three slots below:
+//    - Default slot:  The main "About" section (required)
+//    - "tech" slot:   Tech breakdown section (optional, delete if not needed)
+//    - "learned" slot: What I learned section (optional, delete if not needed)
+//
+// 4. Add screenshots:
+//    - Drop images into public/images/projects/
+//    - Replace the placeholder divs in ProjectLayout with <img> tags
+//    - The layout expects 3 images: one large (16:9) and two smaller
+// ============================================================
+---
+
+<ProjectLayout
+  title="Your Project Title"
+  description="A short description of your project — one or two sentences shown in the hero."
+  tags={{
+    action: [
+      // Uncomment and fill in when your game is live:
+      // { label: 'Play Now', url: 'https://your-name.itch.io/your-game' },
+      // { label: 'Source Code', url: 'https://github.com/tomeaves-dev/your-repo' },
+    ],
+    status: 'In Development', // 'In Development' | 'Released' | 'On Hold'
+    tech: ['Engine', 'Language', 'Other Tags'],
+  }}
+>
+
+  {/* ── DEFAULT SLOT: ABOUT ───────────────────────────────
+      This is the main body of the project page.
+      Write in plain HTML — use <h2>, <h3>, <p> tags.
+      You can also use <code> for inline code snippets.
+  ────────────────────────────────────────────────────── */}
+
+  <h2>About the Project</h2>
+  <p>
+    Describe your project here. What is it? What inspired it?
+    What were you trying to build or learn?
+  </p>
+
+  <h3>Features</h3>
+  <p>
+    List the key features or mechanics of your project.
+  </p>
+
+
+  {/* ── TECH SLOT ─────────────────────────────────────────
+      Optional. Delete this block if you don't want a
+      tech breakdown section on the page.
+  ────────────────────────────────────────────────────── */}
+
+  <Fragment slot="tech">
+    <p>
+      Describe the technical details of your project. What engine, language,
+      libraries or patterns did you use? Why did you make those choices?
+    </p>
+  </Fragment>
+
+
+  {/* ── LEARNED SLOT ──────────────────────────────────────
+      Optional. Delete this block if you don't want a
+      "What I Learned" section on the page.
+  ────────────────────────────────────────────────────── */}
+
+  <Fragment slot="learned">
+    <p>
+      Reflect on what you learned from this project. What was challenging?
+      What would you do differently? What are you proud of?
+    </p>
+  </Fragment>
+
+</ProjectLayout>
