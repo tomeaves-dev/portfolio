@@ -15,7 +15,7 @@ export const projects = [
     title: 'Rolly Rush',
     slug: 'rolly-rush',
     date: '2024-01-01',
-    thumbnail: '/images/rolly-rush/IMG_1377.PNG',
+    thumbnail: '/images/rolly-rush/IMG_1380.PNG',
     description: 'A physics-based marble runner for iOS and Android — and a remake of Rollin\' Crazy, the first game I ever released at 13 years old.',
     tags: {
       action: [],
@@ -41,7 +41,7 @@ export const projects = [
     title: 'Blaze',
     slug: 'blaze',
     date: '2023-01-01',
-    thumbnail: '/images/blaze/1hhIFE.png',
+    thumbnail: '/images/blaze/qD0MBL.png',
     description: 'A retro arcade shoot em up inspired by Geometry Wars, built in Unity with vector-style visuals, wave-based survival, and a unique boost-to-kill mechanic.',
     tags: {
       action: [
