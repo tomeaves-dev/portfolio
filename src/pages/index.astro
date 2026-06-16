@@ -2,9 +2,9 @@
 import { Icon } from 'astro-icon/components';
 import Base from '../layouts/Base.astro';
 import Tags from '../components/Tags.astro';
-import { recentProjects } from '../data/projects.js';
+import { allProjects } from '../data/projects.js';
 
-const projects = recentProjects(2);
+const projects = allProjects();
 ---
 
 <Base title="Home">
@@ -150,13 +150,8 @@ const projects = recentProjects(2);
   <section class="section" id="projects">
     <div class="container">
       <p class="section-label">projects</p>
-      <div class="section-heading-row">
-        <h2>Recent Projects</h2>
-        <a href="/projects" class="all-link">View all {projects.length} projects →</a>
-      </div>
-      <p class="section-sub">
-        A selection of my recent personal projects. See <a href="/projects">all projects</a>.
-      </p>
+      <h2>Projects</h2>
+      <p class="section-sub">A collection of my favourite personal projects, most recent first.</p>
 
       <div class="projects-grid">
         {projects.map(project => (
@@ -393,24 +388,6 @@ const projects = recentProjects(2);
   .t-out    { color: var(--text-secondary); }
 
   /* ── PROJECTS ─────────────────────────────────────── */
-  .section-heading-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin: var(--space-4) 0 0;
-  }
-
-  .all-link {
-    font-size: var(--text-sm);
-    color: var(--accent);
-    transition: opacity var(--transition);
-    white-space: nowrap;
-  }
-
-  .all-link:hover {
-    opacity: 0.7;
-  }
-
   .section-sub {
     color: var(--text-secondary);
     margin: var(--space-2) 0 var(--space-12);
