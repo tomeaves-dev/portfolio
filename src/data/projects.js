@@ -11,7 +11,7 @@ export const projects = [
     },
   },
   {
-    title: 'RollyRush',
+    title: 'Rolly Rush',
     slug: 'rolly-rush',
     date: '2024-01-01',
     description: 'A physics-based marble runner for iOS and Android — and a remake of Rollin\' Crazy, the first game I ever released at 13 years old.',
