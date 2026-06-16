@@ -11,29 +11,14 @@ export const projects = [
     },
   },
   {
-    title: 'Sol',
-    slug: 'sol',
-    date: '2023-06-01',
-    description: 'A real-time solar system sandbox built in Unity, featuring physically-inspired planet shaders, free flight, and an orbit camera mode for each celestial body.',
+    title: 'RollyRush',
+    slug: 'rolly-rush',
+    date: '2024-01-01',
+    description: 'A physics-based marble runner for iOS and Android — and a remake of Rollin\' Crazy, the first game I ever released at 13 years old.',
     tags: {
-      action: [
-        { label: 'Play Now', url: 'https://tommy-eaves-games.itch.io/sol' },
-      ],
-      status: 'Released',
-      tech: ['Unity', 'C#', 'Shader Graph', 'URP'],
-    },
-  },
-  {
-    title: 'Blaze',
-    slug: 'blaze',
-    date: '2023-01-01',
-    description: 'A retro arcade shoot em up inspired by Geometry Wars, built in Unity with vector-style visuals, wave-based survival, and a unique boost-to-kill mechanic.',
-    tags: {
-      action: [
-        { label: 'Play Now', url: 'https://tommy-eaves-games.itch.io/blaze' },
-      ],
-      status: 'Released',
-      tech: ['Unity', 'C#', 'Physics', 'AI'],
+      action: [],
+      status: 'In Development',
+      tech: ['Godot', 'GDScript', 'C#', 'Physics', 'Mobile'],
     },
   },
   {
@@ -50,6 +35,19 @@ export const projects = [
     },
   },
   {
+    title: 'Blaze',
+    slug: 'blaze',
+    date: '2023-01-01',
+    description: 'A retro arcade shoot em up inspired by Geometry Wars, built in Unity with vector-style visuals, wave-based survival, and a unique boost-to-kill mechanic.',
+    tags: {
+      action: [
+        { label: 'Play Now', url: 'https://tommy-eaves-games.itch.io/blaze' },
+      ],
+      status: 'Released',
+      tech: ['Unity', 'C#', 'Physics', 'AI'],
+    },
+  },
+  {
     title: 'Bevy Rogue',
     slug: 'bevy-rogue',
     date: '2025-01-01',
@@ -61,14 +59,16 @@ export const projects = [
     },
   },
   {
-    title: 'RollyRush',
-    slug: 'rolly-rush',
-    date: '2024-01-01',
-    description: 'A physics-based marble runner for iOS and Android — and a remake of Rollin\' Crazy, the first game I ever released at 13 years old.',
+    title: 'Sol',
+    slug: 'sol',
+    date: '2023-06-01',
+    description: 'A real-time solar system sandbox built in Unity, featuring physically-inspired planet shaders, free flight, and an orbit camera mode for each celestial body.',
     tags: {
-      action: [],
-      status: 'In Development',
-      tech: ['Godot', 'GDScript', 'C#', 'Physics', 'Mobile'],
+      action: [
+        { label: 'Play Now', url: 'https://tommy-eaves-games.itch.io/sol' },
+      ],
+      status: 'Released',
+      tech: ['Unity', 'C#', 'Shader Graph', 'URP'],
     },
   },
   {
@@ -87,8 +87,7 @@ export const projects = [
   },
 ];
 
+export const allProjects = () => [...projects];
+
 export const recentProjects = (n = 2) =>
   [...projects].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, n);
-
-export const allProjects = () =>
-  [...projects].sort((a, b) => new Date(b.date) - new Date(a.date));
