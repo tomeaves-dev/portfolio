@@ -5,6 +5,7 @@ import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://tomeaves.dev',
+  devToolbar: { enabled: false },
   integrations: [mdx(), icon()],
   markdown: {
     shikiConfig: {
