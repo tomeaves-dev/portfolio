@@ -2,7 +2,7 @@
 import Base from './Base.astro';
 import Tags from '../components/Tags.astro';
 
-const { title, description, tags = { action: [], status: '', tech: [] }, screenshots = [] } = Astro.props;
+const { title, description, tags = { action: [], status: '', tech: [] }, screenshots = [], video = '' } = Astro.props;
 ---
 
 <Base title={title}>
@@ -21,6 +21,25 @@ const { title, description, tags = { action: [], status: '', tech: [] }, screens
         <p class="project-description">{description}</p>
       </div>
     </header>
+
+    <!-- VIDEO -->
+    {video && (
+      <section class="section video-section">
+        <div class="container">
+          <p class="section-label">video</p>
+          <div class="video-wrapper">
+            <iframe
+              src={video}
+              title={`${title} video`}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- SCREENSHOTS -->
     <section class="section screenshots-section">
@@ -123,6 +142,28 @@ const { title, description, tags = { action: [], status: '', tech: [] }, screens
     color: var(--text-secondary);
     max-width: 60ch;
     line-height: 1.6;
+  }
+
+  .video-section {
+    padding: var(--space-12) 0 var(--space-4);
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: var(--space-6);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   .screenshots-section {

@@ -3,6 +3,7 @@ export const projects = [
     title: 'Eaves Rally',
     slug: 'eaves-rally',
     date: '2024-06-01',
+    thumbnail: '/images/eaves-rally/Screenshot%202026-06-16%2021-52-25.png',
     description: 'A simulation rally game featuring the iconic Lancia Delta, built in UE5 with realistic Chaos Vehicle physics and a handcrafted pace note system.',
     tags: {
       action: [],
@@ -14,6 +15,7 @@ export const projects = [
     title: 'Rolly Rush',
     slug: 'rolly-rush',
     date: '2024-01-01',
+    thumbnail: '/images/rolly-rush/IMG_1377.PNG',
     description: 'A physics-based marble runner for iOS and Android — and a remake of Rollin\' Crazy, the first game I ever released at 13 years old.',
     tags: {
       action: [],
@@ -25,6 +27,7 @@ export const projects = [
     title: 'Slime Climb',
     slug: 'slime-climb',
     date: '2022-11-01',
+    thumbnail: '/images/slime-climb/Screenshot%202026-06-16%2022-09-18.png',
     description: 'A 72-hour game jam winner. Play as Hopper, a slime trapped in a wizard\'s tower with rising lava, and climb as high as you can using a physics-driven grapple arm.',
     tags: {
       action: [
@@ -38,6 +41,7 @@ export const projects = [
     title: 'Blaze',
     slug: 'blaze',
     date: '2023-01-01',
+    thumbnail: '/images/blaze/1hhIFE.png',
     description: 'A retro arcade shoot em up inspired by Geometry Wars, built in Unity with vector-style visuals, wave-based survival, and a unique boost-to-kill mechanic.',
     tags: {
       action: [
@@ -51,6 +55,7 @@ export const projects = [
     title: 'Bevy Rogue',
     slug: 'bevy-rogue',
     date: '2025-01-01',
+    thumbnail: '/images/bevy-rogue/Screenshot%202026-06-16%20at%2023.30.31.png',
     description: 'A real-time roguelike built in Rust using Bevy and an ECS architecture. Features procedural map generation, field-of-view systems, and real-time player movement.',
     tags: {
       action: [],
@@ -62,6 +67,7 @@ export const projects = [
     title: 'Sol',
     slug: 'sol',
     date: '2023-06-01',
+    thumbnail: '/images/sol/Screenshot%202026-06-16%2021-55-24.png',
     description: 'A real-time solar system sandbox built in Unity, featuring physically-inspired planet shaders, free flight, and an orbit camera mode for each celestial body.',
     tags: {
       action: [

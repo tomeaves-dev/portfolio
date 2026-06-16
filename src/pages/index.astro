@@ -157,7 +157,10 @@ const projects = allProjects().filter(p => p.slug !== 'portfolio');
       <div class="projects-grid">
         {projects.map(project => (
           <div class="project-card">
-            <div class="project-thumb-placeholder"></div>
+            {project.thumbnail
+              ? <img src={project.thumbnail} alt={`${project.title} screenshot`} class="project-thumb" />
+              : <div class="project-thumb-placeholder"></div>
+            }
             <div class="project-card-body">
               <Tags tags={project.tags} />
               <h3>{project.title}</h3>
@@ -422,6 +425,12 @@ const projects = allProjects().filter(p => p.slug !== 'portfolio');
   .project-card:hover {
     border-color: var(--border-glow);
     box-shadow: var(--accent-glow);
+  }
+
+  .project-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 
   .project-thumb-placeholder {
