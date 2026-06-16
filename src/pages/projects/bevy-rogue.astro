@@ -1,0 +1,72 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Bevy Rogue"
+  description="An early prototype roguelike built in Rust with Bevy, combining bracket-lib's roguelike systems with Bevy's ECS for procedural map generation, FOV, and turn-based combat."
+  tags={{
+    action: [],
+    status: 'In Development',
+    tech: ['Bevy', 'Rust', 'ECS', 'Procedural Generation', 'Open Source'],
+  }}
+>
+
+  <h2>About the Project</h2>
+  <p>
+    bevy_rogue started from two ideas colliding at the right time. A friend suggested I try
+    <strong>Rust</strong> — I use C++ professionally, so it seemed like a natural next step.
+    Around the same time I'd been playing <strong>DoomRL</strong> and wanted to make a roguelike.
+    Bevy is the most widely used Rust game engine, and when I discovered it uses an
+    <strong>Entity Component System</strong> — a pattern I'd always been curious about but hadn't
+    deeply explored — the project wrote itself.
+  </p>
+  <p>
+    In its current state it's an early prototype. The map is procedurally generated as you explore,
+    enemies wander the dungeon and engage in simple turn-based combat, and a field-of-view system
+    limits what you can see. Get surrounded and it's game over.
+  </p>
+
+  <h3>Features</h3>
+  <p>
+    Procedural map generation that expands as you move, field-of-view with fog of war,
+    turn-based combat, and wandering enemies that can surround and overwhelm the player.
+  </p>
+
+  <Fragment slot="tech">
+    <p>
+      The project is built on three main pillars: <strong>Bevy</strong> for the ECS architecture,
+      rendering, and game loop; <strong>bevy_ecs_tilemap</strong> for efficient tile-based map
+      rendering; and <strong>bracket-lib</strong>, the Rust roguelike crate from
+      <a href="https://bfnightly.bracketproductions.com/" target="_blank" rel="noopener">Hands-on Rust</a>,
+      for roguelike-specific systems like FOV and map generation algorithms.
+    </p>
+    <p>
+      The core approach was essentially a conversion of bracket-lib's roguelike systems into
+      Bevy's ECS — taking bracket's battle-tested roguelike logic and restructuring it as Bevy
+      components and systems. This gave better performance, expandability, and access to Bevy's
+      rendering and audio pipeline (though audio hasn't been implemented yet).
+    </p>
+    <p>
+      Working in Bevy's ECS was the primary learning objective. Rather than objects with methods,
+      everything is data — components attached to entities, and systems that query for specific
+      combinations of components. It's a genuinely different way of thinking about game architecture,
+      and one that maps surprisingly well to how roguelikes are typically structured.
+    </p>
+  </Fragment>
+
+  <Fragment slot="learned">
+    <p>
+      Rust's borrow checker is famously challenging at first, but working through it alongside
+      Bevy's ECS was a useful combination. The borrow checker pushes you away from shared mutable
+      state — which is exactly what ECS encourages anyway. Once that clicked, the two systems
+      started to feel complementary rather than combative.
+    </p>
+    <p>
+      ECS is a pattern I'd read about but never really used in anger before this project. Having
+      to think in systems and components rather than objects and methods was a genuine shift, and
+      one that's already influenced how I think about architecture in my professional work in UE5.
+    </p>
+  </Fragment>
+
+</ProjectLayout>

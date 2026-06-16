@@ -1,0 +1,83 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="RollyRush"
+  description="A physics-based marble runner for iOS and Android — and a remake of the first game I ever released, Rollin' Crazy, which I built at 13 years old."
+  tags={{
+    action: [],
+    status: 'In Development',
+    tech: ['Godot', 'GDScript', 'C#', 'Physics', 'Mobile'],
+  }}
+>
+
+  <h2>About the Project</h2>
+  <p>
+    RollyRush is a remake of <strong>Rollin' Crazy</strong> — an infinite runner for iOS that I
+    built and released at <strong>13 years old</strong>. When it came out, everyone at my school
+    was playing it. It had Game Center leaderboards, and the competition for the highest score
+    spread through the school like wildfire. That response — watching people genuinely enjoy
+    something I'd made — is what made me want to pursue game development as a career.
+  </p>
+  <p>
+    RollyRush is a reimagining of that original idea, inspired by <strong>Marble Blast Ultra</strong>
+    and <strong>Crossy Road</strong>. You control a physics-driven marble rolling through an
+    infinite obstacle course — conveyor belts, trampolines, punching bags, swinging hammers,
+    springs and more — rolling as far as you can before the obstacles get the better of you.
+    The goal is the same as it was back then: one more run, one more metre, beat your highscore.
+  </p>
+
+  <h3>The Physics</h3>
+  <p>
+    The ball physics are the foundation of everything. For the first two weeks of development
+    I did nothing but tweak the physics on a small test map — mass, friction, damping, impulse
+    response — until it felt right. I had family members playtest it repeatedly until the
+    movement felt intuitive and satisfying to people who'd never played it before.
+    Getting that right before building anything else was the best decision I made on this project.
+  </p>
+
+  <h3>Features</h3>
+  <p>
+    Procedurally generated infinite levels built from a handcrafted set of obstacle prefabs,
+    physics-driven marble movement tuned over two weeks of iteration, a varied obstacle set
+    including conveyor belts, trampolines, punching bags, swinging hammers and springs,
+    and a mobile-first design targeting iOS and Android.
+  </p>
+
+  <Fragment slot="tech">
+    <p>
+      Built in <strong>Godot</strong> using a mix of <strong>GDScript</strong> and <strong>C#</strong>.
+      The project was partly a personal challenge to test what I'd learned in Godot after coming
+      from Unity and UE5.
+    </p>
+    <p>
+      The most interesting technical challenge was the <strong>procedural level generation</strong>.
+      Defining a ruleset that would reliably produce levels that were fun — not just technically valid —
+      from a set of prefab obstacles took significant iteration. Each obstacle type has its own
+      placement rules, spacing requirements, and difficulty weighting, and the generator has to
+      combine them in a way that feels handcrafted rather than random.
+    </p>
+  </Fragment>
+
+  <Fragment slot="learned">
+    <p>
+      Remaking a project you built as a child is a strange experience. The original Rollin' Crazy
+      was built with almost no knowledge of game development — just enthusiasm and trial and error.
+      Coming back to the same idea with years of professional experience has been both humbling
+      and satisfying. The core loop is simple, but making it feel good is genuinely hard.
+    </p>
+    <p>
+      The two weeks spent on physics alone before touching any other system was one of the best
+      development decisions I've made. It's tempting to rush to content, but if the core feel
+      isn't right, nothing else matters. Every hour spent on the physics paid back tenfold when
+      it came to building levels around it.
+    </p>
+    <p>
+      Procedural generation that produces fun levels — not just valid ones — is a design problem
+      as much as a technical one. The ruleset isn't just about what's allowed; it's about what
+      makes a good sequence of challenges. That distinction took a while to internalise.
+    </p>
+  </Fragment>
+
+</ProjectLayout>

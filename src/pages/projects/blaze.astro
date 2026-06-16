@@ -1,0 +1,82 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Blaze"
+  description="A retro arcade shoot em up inspired by Geometry Wars, built in Unity with vector-style visuals, wave-based survival, and a unique boost-to-kill mechanic."
+  tags={{
+    action: [
+      { label: 'Play Now', url: 'https://tommy-eaves-games.itch.io/blaze' },
+    ],
+    status: 'Released',
+    tech: ['Unity', 'C#', 'Procedural', 'AI'],
+  }}
+>
+
+  <h2>About the Project</h2>
+  <p>
+    Blaze is a top-down arcade survival game built in the spirit of <strong>Geometry Wars Retro Evolved 2</strong> —
+    the first Xbox Live Arcade game I ever owned, and a game that's stuck with me ever since. Waves of enemies
+    spawn and close in on the player, and the goal is simply to survive as long as possible.
+  </p>
+  <p>
+    The visuals are built entirely from <strong>vector-generated shapes</strong> — no sprites or textures,
+    just clean geometric forms that evoke the classic arcade aesthetic.
+  </p>
+
+  <h3>The Core Mechanic</h3>
+  <p>
+    The most distinctive design decision in Blaze is how combat works. Your guns don't damage enemies —
+    instead they fire backwards to intercept incoming missiles. To actually destroy enemies, you have to
+    <strong>boost-dash directly into them</strong>, smashing them apart on contact. This creates a constant
+    tension between staying mobile to survive and committing to aggressive dashes to clear the screen.
+  </p>
+
+  <h3>Features</h3>
+  <p>
+    Wave-based survival with escalating difficulty, vector-style visuals, rear-firing guns for missile
+    interception, boost-dash as the primary offensive tool, and a priority-based enemy AI pathfinding system
+    built to handle hundreds of simultaneous enemies.
+  </p>
+
+  <Fragment slot="tech">
+    <p>
+      The most technically interesting challenge in Blaze was the <strong>enemy AI pathfinding</strong>.
+      With potentially hundreds of enemies on screen at once, running A* pathfinding recalculations for
+      every enemy every frame was never going to work.
+    </p>
+    <p>
+      The solution was a <strong>grid cell priority queue system</strong>. The map is divided into square
+      cells, and path recalculation requests are queued and processed over time rather than all at once.
+      Enemies in the same cell as the player, or in adjacent cells, are given higher priority and recalculate
+      more frequently. Enemies further away recalculate less often — the player rarely notices the difference,
+      but the performance impact is significant.
+    </p>
+    <p>
+      If I were to rebuild this today I'd swap the A* implementation for a <strong>flow field algorithm</strong>,
+      which is much better suited to large numbers of enemies all targeting the same point. A single flow field
+      calculation covers the entire map and every enemy can read from it — far more efficient than individual
+      pathfinding per enemy.
+    </p>
+  </Fragment>
+
+  <Fragment slot="learned">
+    <p>
+      Blaze taught me a lot about designing around performance constraints. The AI pathfinding problem
+      forced me to think carefully about when and how often expensive calculations need to run — and how
+      to fake precision where the player can't tell the difference.
+    </p>
+    <p>
+      The boost-to-kill mechanic came from a desire to make movement feel meaningful. In most shoot em ups
+      the ship feels like a cursor — you just point and shoot. Making the dash your primary weapon meant
+      positioning and momentum mattered, which made the game feel much more physical and satisfying.
+    </p>
+    <p>
+      Knowing what I know now about flow fields, I'd approach the AI very differently. But working through
+      the problem with A* and a priority queue was genuinely educational — understanding why a flow field
+      is better requires understanding what A* struggles with first.
+    </p>
+  </Fragment>
+
+</ProjectLayout>

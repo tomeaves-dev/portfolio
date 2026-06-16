@@ -1,0 +1,76 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Slime Climb"
+  description="A 72-hour game jam winner. Play as Hopper, a slime trapped in a wizard's tower with rising lava, and climb as high as you can using a physics-driven grapple arm."
+  tags={{
+    action: [
+      { label: 'Play Now', url: 'https://tommy-eaves-games.itch.io/slime-climb' },
+    ],
+    status: 'Released',
+    tech: ['Unity', 'C#', 'Physics', 'Game Jam'],
+  }}
+>
+
+  <h2>About the Project</h2>
+  <p>
+    Slime Climb was built in <strong>72 hours</strong> for the GT Jam, hosted by the Staffs Games Institute.
+    You play as <strong>Hopper</strong> — a slime trapped in a wizard's tower with lava rising fast from below.
+    The tower extends infinitely upward, so the only option is to climb. Dodge enemies, collect coins, and
+    chase your highscore for as long as you can survive.
+  </p>
+  <p>
+    The game was judged by three developers from <strong>Codemasters</strong> — the EA-owned studio behind
+    DiRT, GRID Legends, and the F1 series. We won, and they told us we should release it on the App Store
+    and Google Play.
+  </p>
+
+  <h3>The Grapple Mechanic</h3>
+  <p>
+    The heart of the game is Hopper's grapple arm. Getting the physics right was one of the most enjoyable
+    challenges of the jam — the nuance in how the arm swings, stretches, and releases is what gives the game
+    its <strong>easy to learn, hard to master</strong> quality. Chasing highscores becomes increasingly
+    addictive as you learn to use the grapple more efficiently, and collecting coins for bonus points adds
+    extra risk to every climb.
+  </p>
+
+  <h3>Features</h3>
+  <p>
+    Infinite procedural tower, physics-driven grapple arm, multiple enemy types, coin collection for score
+    multipliers, rising lava as a constant threat, and a highscore loop that keeps you coming back.
+  </p>
+
+  <Fragment slot="tech">
+    <p>
+      Built in <strong>Unity with C#</strong> over 72 hours. I handled all the code while working alongside
+      two artists who produced all the sprites and visual assets.
+    </p>
+    <p>
+      The grapple arm physics was the most involved system. Getting it to feel satisfying required careful
+      tuning of the joint constraints, spring forces, and release timing. Too stiff and it feels rigid and
+      unforgiving; too loose and it feels out of control. The sweet spot is what makes the movement feel
+      expressive and skill-based rather than just functional.
+    </p>
+  </Fragment>
+
+  <Fragment slot="learned">
+    <p>
+      Game jams are a completely different discipline to regular development. With 72 hours on the clock,
+      every decision has to be ruthless — scope, art style, core mechanic. We cut anything that wasn't
+      essential to the core loop and it paid off. The game is small but it's tight.
+    </p>
+    <p>
+      The judges' feedback was the biggest validation. Having Codemasters developers tell us the game was
+      good enough to ship commercially gave me a lot of confidence — not just in this project but in my
+      ability to build something polished and fun under pressure.
+    </p>
+    <p>
+      Working with artists for the first time was also a valuable experience. Having dedicated art meant
+      I could focus entirely on code and systems, and the game looked significantly better for it.
+      Communication and clear handoff points matter a lot when time is tight.
+    </p>
+  </Fragment>
+
+</ProjectLayout>

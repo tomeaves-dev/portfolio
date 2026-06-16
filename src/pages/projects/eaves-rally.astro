@@ -1,0 +1,81 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Eaves Rally"
+  description="A simulation rally game featuring the iconic Lancia Delta, built in Unreal Engine 5 with realistic Chaos Vehicle physics and a handcrafted pace note system."
+  tags={{
+    action: [],
+    status: 'In Development',
+    tech: ['UE5', 'Chaos Vehicles', 'Blueprints', 'GAS', 'PCG'],
+  }}
+>
+
+  <h2>About the Project</h2>
+  <p>
+    Eaves Rally is a simulation-focused rally game built around the iconic <strong>Lancia Delta Integrale</strong> —
+    one of the most celebrated rally cars in motorsport history. The game features a single-player time trial
+    mode where the goal is simple: get down the stage as fast as possible.
+  </p>
+  <p>
+    The project started as a University module on prototyping gameplay systems, but it quickly became a passion
+    project. I've always been deep into motorsport and sim racing — Gran Turismo 7, Dirt Rally 2.0, Assetto Corsa Evo —
+    and I own my own sim rig. Building a rally game felt like the natural intersection of my personal interests
+    and my professional development as a gameplay programmer.
+  </p>
+
+  <h3>Pace Notes</h3>
+  <p>
+    The most distinctive feature is the pace note system. I recorded all the pace notes myself, in my own voice,
+    and processed them in <strong>Audacity</strong> to simulate the sound of a co-driver calling through a radio mic.
+    I then built a world trigger system in Unreal that plays the relevant audio recording and displays a
+    custom icon — designed in <strong>Adobe Photoshop</strong> — as the car crosses each trigger point on the track.
+    The result is a system that feels authentic and adds real tension to each stage.
+  </p>
+
+  <h3>Features</h3>
+  <p>
+    Simulation-tuned Chaos Vehicle physics with multiple vehicle tunes, a handcrafted pace note system with
+    custom audio and iconography, PCG-driven foliage and terrain generation from heightmaps, and integration
+    between Chaos Vehicles and the Gameplay Ability System.
+  </p>
+
+  <Fragment slot="tech">
+    <p>
+      The vehicle physics are built on top of Unreal Engine 5's <strong>Chaos Vehicles</strong> system,
+      extended with multiple hand-tuned vehicle setups using Blueprints. Getting the physics to feel
+      right took significant iteration — Chaos Vehicles is powerful but requires a lot of playtesting
+      to dial in a feel that's both challenging and satisfying.
+    </p>
+    <p>
+      One of the more interesting technical decisions was integrating Chaos Vehicles with the
+      <strong>Gameplay Ability System (GAS)</strong>. This gave a clean, data-driven way to handle
+      vehicle abilities and state, and made it straightforward to extend the system with new mechanics.
+    </p>
+    <p>
+      Environment generation is handled by <strong>Unreal's PCG (Procedural Content Generation)</strong> framework,
+      using a heightmap as the terrain source. The initial PCG setup was fiddly to get right, but once
+      it was working it dramatically sped up the process of building and iterating on new stages.
+    </p>
+  </Fragment>
+
+  <Fragment slot="learned">
+    <p>
+      Chaos Vehicles requires a lot of patience. The tuning process is iterative and feel-driven —
+      small changes to suspension, friction, and mass distribution have a huge impact on how the car
+      handles. Having a sim racing background helped me understand what "good" physics should feel like,
+      but translating that into the right parameter values took a lot of trial and error.
+    </p>
+    <p>
+      The pace note system was one of the most creatively satisfying things I've built. Recording,
+      editing, and integrating my own audio added a layer of personality to the project that I didn't
+      expect — and it's the feature that most people notice first when they play it.
+    </p>
+    <p>
+      PCG is a powerful tool but has a steep setup curve. Once it clicked, building environments
+      became significantly faster. I'd use it from the start on any future project with large outdoor environments.
+    </p>
+  </Fragment>
+
+</ProjectLayout>

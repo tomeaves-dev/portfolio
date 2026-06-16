@@ -1,0 +1,47 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="tomeaves.dev"
+  description="This portfolio website, built from scratch using Astro, HTML and CSS. Designed to be easy to update with new projects and blog posts."
+  tags={{
+    action: [
+      { label: 'Visit Site', url: 'https://tomeaves.dev' },
+      { label: 'Source Code', url: 'https://github.com/tomeaves-dev/portfolio' },
+    ],
+    status: 'Released',
+    tech: ['Astro', 'HTML', 'CSS', 'MDX', 'Node.js'],
+  }}
+>
+
+  <h2>About the Project</h2>
+  <p>
+    You're looking at it. This site is built from scratch using <strong>Astro</strong> with plain
+    HTML and CSS — no UI frameworks, no component libraries. The goal was a fast, easy to maintain
+    portfolio that I could update with new projects and blog posts without fighting a CMS or a template.
+  </p>
+  <p>
+    Blog posts are written in <strong>MDX</strong>, project pages are <strong>Astro</strong> components,
+    and the whole thing deploys automatically to <strong>GitHub Pages</strong> on every push to main.
+  </p>
+
+  <Fragment slot="tech">
+    <p>
+      Built with <strong>Astro 6</strong>, chosen for its static-first approach and zero JavaScript
+      by default. Styles are plain CSS using custom properties for theming. Blog posts use
+      <strong>MDX</strong> for Markdown with the option to drop in Astro components where needed.
+      Syntax highlighting is handled by Astro's built-in <strong>Shiki</strong> integration.
+      Deployed to GitHub Pages via a GitHub Actions workflow.
+    </p>
+  </Fragment>
+
+  <Fragment slot="learned">
+    <p>
+      Building a site from scratch rather than reaching for a template forced me to make deliberate
+      decisions about every design choice. It also gave me a much better understanding of CSS layout,
+      custom properties, and how static site generators work under the hood.
+    </p>
+  </Fragment>
+
+</ProjectLayout>
