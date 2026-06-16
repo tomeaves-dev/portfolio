@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import '../styles/global.css';
 const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Astro.props;
 ---
 
@@ -11,7 +12,6 @@ const { title = 'tomeaves-dev', description = 'Game developer portfolio' } = Ast
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>tomeaves.dev | {title}</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
 
